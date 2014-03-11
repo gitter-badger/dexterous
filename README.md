@@ -30,6 +30,24 @@ of code, criticism or suggestions. Please use
 [Github issues](https://github.com/lorefnon/dexterous/issues) for reporting bugs
 or suggesting ideas.
 
+## Dependencies
+
+### Ruby
+MRI Ruby 2.0 is being used for development. I don't plan to test against older
+versions. Although I do plan to support JRuby eventually.
+
+### Database
+An activerecord supported database has to be installed and configured separately.
+Currently the application is being tested only against mysql.
+
+### Testing
+Tests use rspec and cucumber. Cucumber scenarios involving javascript are 
+configured to use poltergeist, and hence require phantomjs to be installed.
+
+### JS runtime
+Some assets precompilers (stylus and coffeescript) rely on a javascript runtime
+being present. In case one is not already installed, please install Node.js.
+
 ## License
 
 Code is released under [GPL v3.0 license](https://www.gnu.org/copyleft/gpl.html).
