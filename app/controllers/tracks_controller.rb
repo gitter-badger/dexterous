@@ -38,4 +38,7 @@ class TracksController < ResourceController
             .permit(:title, :description, :visibility, :contributability)
     end
 
+    def timeline
+    end
+
 end

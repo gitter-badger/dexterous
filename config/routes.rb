@@ -2,6 +2,7 @@ Dexterous::Application.routes.draw do
 
   root 'home#index'
   get 'dashboard' => 'home#dashboard'
+  get 'tracks/:id/timeline' => 'tracks#timeline'
 
   resources :learning_resources
   resources :milestones
