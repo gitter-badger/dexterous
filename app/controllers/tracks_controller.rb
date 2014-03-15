@@ -30,6 +30,10 @@ class TracksController < ResourceController
         head :not_found unless @model.viewable_by? current_user
     end
 
+    def timeline
+        render layout: 'application'
+    end
+
     private
 
     def extract_params
@@ -37,8 +41,4 @@ class TracksController < ResourceController
             .require(:track)
             .permit(:title, :description, :visibility, :contributability)
     end
-
-    def timeline
-    end
-
 end
