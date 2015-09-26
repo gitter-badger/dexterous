@@ -1,58 +1,58 @@
 - content_for :head do
-    = stylesheet_link_tag 'home/dashboard_new', media: :all
-    = javascript_include_tag "home/dashboard"
+  = stylesheet_link_tag 'home/dashboard_new', media: :all
+  = javascript_include_tag "home/dashboard"
 
 /
-    - if @enrollments.length == 0
-        = render partial: 'introduction'
+  - if @enrollments.length == 0
+    = render partial: 'introduction'
 
 #sidebar
-    #user-info
-        %h2= current_user.name
-    %h1 Updates
+  #user-info
+    %h2= current_user.name
+  %h1 Updates
 #main
-    %header
-        .rfloat
-            %input#search-box
-        %h1 Your tracks
-    .body
-        %ul#tracks
-            %li.track#new-track
-                = link_to "Create a track", controller: 'tracks', action: 'new'
-            - @enrollments.each do |en|
-                %li.track
-                    %header
-                        %h1
-                            %i.fa.fa-road
-                            = link_to en.track.title, en.track
-                    .body= en.track.description
-                    - i = 0
-                    - first = nil
-                    .milestones
-                        %h2.tcenter Milestones
-                        %ul.milestones-list
-                            - en.track.milestones.each do |milestone|
-                                %li
-                                    - if @achievements[milestone.id].nil?
-                                        %i.fa.fa-circle-o
-                                    - else
-                                        - first = milestone if first.nil?
-                                        %i.fa.fa-check-circle-o
-                                        - i += 1
-                                    %span.title= milestone.title
-                        .explore-wrapper.tcenter
-                            = link_to "Explore Track", en.track, class: 'pure-button'
-                    .achievement-summary
-                        %a.num-thumb
-                            %span.ach-count= i
-                            = " / "
-                            %span.milestone-count= en.track.milestones.length
-                        Milestones Completed
-                    .upcoming-summary
-                        - if first.nil?
-                            %p.zilch
-                                No upcoming milestone
-                        - else
-                            %h2 Next milestone
-                            %h3= first.title
-                            %p= first.description
+  %header
+    .rfloat
+      %input#search-box
+    %h1 Your tracks
+  .body
+    %ul#tracks
+      %li.track#new-track
+        = link_to "Create a track", controller: 'tracks', action: 'new'
+      - @enrollments.each do |en|
+        %li.track
+          %header
+            %h1
+              %i.fa.fa-road
+              = link_to en.track.title, en.track
+          .body= en.track.description
+          - i = 0
+          - first = nil
+          .milestones
+            %h2.tcenter Milestones
+            %ul.milestones-list
+              - en.track.milestones.each do |milestone|
+                %li
+                  - if @achievements[milestone.id].nil?
+                    %i.fa.fa-circle-o
+                  - else
+                    - first = milestone if first.nil?
+                    %i.fa.fa-check-circle-o
+                    - i += 1
+                  %span.title= milestone.title
+            .explore-wrapper.tcenter
+              = link_to "Explore Track", en.track, class: 'pure-button'
+          .achievement-summary
+            %a.num-thumb
+              %span.ach-count= i
+              = " / "
+              %span.milestone-count= en.track.milestones.length
+            Milestones Completed
+          .upcoming-summary
+            - if first.nil?
+              %p.zilch
+                No upcoming milestone
+            - else
+              %h2 Next milestone
+              %h3= first.title
+              %p= first.description

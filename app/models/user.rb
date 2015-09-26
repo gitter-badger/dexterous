@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
     include Authority::UserAbilities
 
     has_many :permissions
-    has_many :tracks,
-        through: :permissions
+    has_many :tracks, through: :permissions
     has_many :enrollments
     has_many :achievements,
         through: :enrollments
