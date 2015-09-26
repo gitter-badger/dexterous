@@ -8,8 +8,6 @@ gem 'pg'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'authority'
-gem 'figaro'
-gem "recaptcha", :require => "recaptcha/rails"
 
 # Servers and deployment
 # ======================
