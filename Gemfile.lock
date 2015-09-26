@@ -91,8 +91,6 @@ GEM
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     ffi (1.9.10)
-    figaro (1.1.1)
-      thor (~> 0.14)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.5)
@@ -218,7 +216,6 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    recaptcha (0.4.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rspec (3.3.0)
@@ -293,7 +290,6 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
-  figaro
   font-awesome-rails
   guard-livereload
   guard-rspec
@@ -307,7 +303,6 @@ DEPENDENCIES
   quiet_assets
   rack-livereload
   rails (= 4.2.4)
-  recaptcha
   rspec-rails
   shoulda-matchers
   stylus
