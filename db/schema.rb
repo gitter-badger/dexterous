@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20140309220456) do
 
-  create_table "achievements", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "achievements", force: :cascade do |t|
     t.integer  "enrollment_id"
     t.integer  "milestone_id"
     t.integer  "duration"
@@ -22,14 +25,14 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.datetime "updated_at"
   end
 
-  create_table "enrollments", force: true do |t|
+  create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "track_id"
     t.datetime "enrolled_at"
     t.datetime "completed_at"
   end
 
-  create_table "learning_resources", force: true do |t|
+  create_table "learning_resources", force: :cascade do |t|
     t.string   "url"
     t.string   "title"
     t.integer  "milestone_id"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.datetime "updated_at"
   end
 
-  create_table "milestones", force: true do |t|
+  create_table "milestones", force: :cascade do |t|
     t.integer  "owner_id"
     t.integer  "track_id"
     t.string   "title"
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.datetime "updated_at"
   end
 
-  create_table "permissions", force: true do |t|
+  create_table "permissions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "track_id"
     t.boolean  "can_view"
@@ -63,21 +66,21 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.datetime "updated_at"
   end
 
-  create_table "subscriptions", force: true do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.integer  "topic_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "topics", force: true do |t|
+  create_table "topics", force: :cascade do |t|
     t.integer  "subject_id"
     t.integer  "subject_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "tracks", force: true do |t|
+  create_table "tracks", force: :cascade do |t|
     t.integer  "owner_id"
     t.string   "title"
     t.text     "description"
@@ -87,14 +90,14 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.datetime "updated_at"
   end
 
-  create_table "updates", force: true do |t|
+  create_table "updates", force: :cascade do |t|
     t.integer  "topic_id"
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",                                null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
