@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.2.4'
 
 # Ruby Libraries
 # ==============
-gem 'mysql2'
+gem 'pg'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'authority'
@@ -38,19 +38,10 @@ gem 'uglifier', '>= 1.3.0'
 group :development , :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'rspec-core', '~> 3.0.0.beta2',
-    github: 'rspec/rspec-core',
-    branch: 'master'
-  %w[expectations mocks rails support].each do |name|
-    gem "rspec-#{name}",
-      github: "rspec/rspec-#{name}",
-      branch: 'master'
-  end
-  gem 'rspec', '~> 3.0.0.beta2'
+  gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'debugger'
   gem 'konacha'
   gem 'capybara'
   gem 'poltergeist'
