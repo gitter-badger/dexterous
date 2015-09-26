@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309220456) do
+ActiveRecord::Schema.define(version: 20140309220430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.integer  "milestone_id"
     t.integer  "duration"
     t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contributors", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "track_id"
+    t.boolean  "can_view"
+    t.boolean  "can_edit"
+    t.boolean  "can_manage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,24 +65,6 @@ ActiveRecord::Schema.define(version: 20140309220456) do
     t.datetime "updated_at"
   end
 
-  create_table "permissions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "track_id"
-    t.boolean  "can_view"
-    t.boolean  "can_edit"
-    t.boolean  "can_contribute"
-    t.boolean  "can_manage"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "topics", force: :cascade do |t|
     t.integer  "subject_id"
     t.integer  "subject_type"
@@ -81,18 +73,9 @@ ActiveRecord::Schema.define(version: 20140309220456) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.integer  "owner_id"
     t.string   "title"
     t.text     "description"
     t.string   "visibility"
-    t.string   "contributability"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "updates", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
