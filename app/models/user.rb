@@ -7,47 +7,27 @@ class User < ActiveRecord::Base
 
     include Authority::UserAbilities
 
-    has_many :permissions
-    has_many :tracks, through: :permissions
+    has_many :contributors
+
+    has_many :contributable_tracks,
+             source: :track,
+             through: :contributors
+
     has_many :enrollments
-    has_many :achievements,
-        through: :enrollments
-    has_many :achieved_milestones,
-        through: :achievements,
-        source: :milestone
+
     has_many :enrolled_tracks,
-        through: :enrollments,
-        source: :track
-    has_many :subscriptions
-    has_many :topics,
-        through: :subscriptions
-    has_many :updates,
-        through: :subscriptions
+             source: :track,
+             through: :enrollments
 
-    adjective_map = {
-        view: :viewable,
-        edit: :editable,
-        contribute: :contributable,
-        manage: :manageable
-    }
-    adjective_map.each do |verb, adjective|
-        has_many :"#{verb}_permissions",
-            { class_name: 'Permission' },
-            -> { where(:"can_#{verb}" => true) }
+    has_many :achievements,
+             through: :enrollments
 
-        has_many :"#{adjective}_tracks",
-            source: 'track',
-            through: :"#{verb}_permissions"
-    end
-
-    %w{Track Milestone LearningResource}.each do |resource|
-        has_many :"owned_#{resource.underscore.pluralize}",
-            inverse_of: :owner,
-            foreign_key: :owner_id,
-            class_name: resource
-    end
+    has_many :achieved_milestones,
+             through: :achievements,
+             source: :milestone
 
     validates :name,
         presence: true,
         length: { minimum: 5, maximum: 30 }
+
 end

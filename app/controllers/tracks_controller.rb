@@ -22,11 +22,10 @@ class TracksController < ResourceController
   end
 
   def show
-    @model = Track
-      .includes(
-        :learning_resources,
-        :milestones => [:achievements]
-       ).find params[:id]
+    @model = Track.includes(
+           :learning_resources,
+           :milestones => [:achievements]
+           ).find params[:id]
     head :not_found unless @model.viewable_by? current_user
   end
 
