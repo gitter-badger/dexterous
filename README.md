@@ -1,6 +1,5 @@
 ![Screenshot](http://i.imgur.com/qUwNIyL.png)
 
-
 # Dexterous
 
 Dexterous is a tool for experts in any discipline, who would like to guide others through focused learning tracks. Aspirants can pursue these tracks at their own time and convenience and interact with the experts for guidance and provide feedback about the course.
