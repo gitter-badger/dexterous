@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+  include Pundit
+
+  # TODO Enable after policies have been added
+  # after_action :verify_authorized, :except => :index
+  # after_action :verify_policy_scoped, :only => :index
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Prevent CSRF attacks by raising an exception.
