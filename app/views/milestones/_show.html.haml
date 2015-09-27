@@ -10,10 +10,10 @@
 .milestone-footer
   .milestone-controls.rfloat
 
-    %a.edit-thumb
+    = link_to edit_milestone_path(milestone), class: 'edit-thumb', remote: true do
       %i.fa.fa-edit
 
-    %a.del-thumb
+    = link_to milestone_path(milestone), method: 'delete', class: 'del-thumb', remote: true do
       %i.fa.fa-trash-o
 
   .resource-thumb
