@@ -44,7 +44,7 @@ body {
   width: 20px;
   margin: 10px auto;
   display: block;
-  background: url("/assets/down_circle.png") no-repeat center center;
+  background: image-url("down_circle.png") no-repeat center center;
   -webkit-animation: pushdown 3s infinite;
 }
 #banner {
@@ -55,11 +55,11 @@ body {
   border-bottom: 3px solid #c8c8c8;
 }
 #banner .inner-1 {
-  background: url("/assets/stripes.png");
+  background: image-url("stripes.png");
   height: 100%;
 }
 #banner .inner-1 .inner-2 {
-  background: url("/assets/noise.png");
+  background: image-url("noise.png");
   height: 100%;
 }
 #banner .inner-1 .inner-2 .inner-3 {

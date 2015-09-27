@@ -12,7 +12,7 @@
   border-radius: 3px;
   overflow: hidden;
   background-color: #fff;
-  background: #fff url("/assets/arrowdown.gif") no-repeat 90% 50%;
+  background: #fff image-url("arrowdown.gif") no-repeat 90% 50%;
 }
 .select-wrapper select {
   padding: 5px 8px;
@@ -119,7 +119,7 @@
   margin: 0;
 }
 #milestones > ul > li .thumb {
-  background: url("/assets/milestone_circle.png") center center no-repeat;
+  background: image-url("milestone_circle.png") center center no-repeat;
   width: 21px;
   height: 21px;
   position: absolute;
@@ -350,8 +350,8 @@
 }
 .milestone-completion-thumb.complete,
 .milestone-completion-thumb:hover {
-  background-image: url("http://localhost:3000/assets/achievement_complete.png");
+  background-image: image-url("achievement_complete.png");
 }
 .milestone-completion-thumb.complete:hover {
-  background-image: url("http://localhost:3000/assets/achievement_remove.png");
+  background-image: image-url("achievement_remove.png");
 }
