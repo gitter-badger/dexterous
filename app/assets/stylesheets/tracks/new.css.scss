@@ -1,0 +1,46 @@
+/*
+ *= require ../application
+ */
+
+@import '../mixins/dashboard';
+
+.wizard {
+  background: #fff;
+  width: 80%;
+  margin: 30px auto;
+  border: 2px solid #c8c8c8;
+  padding: 10px;
+  text-align: center;
+}
+.wizard .wizard-title h1 {
+  color: #cf0920;
+  font-size: 1.3em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.wizard .wizard-footer {
+  margin-top: 30px;
+  border-top: 1px solid #e6e6e6;
+  padding-top: 10px;
+}
+.wizard .wizard-body {
+  min-height: 300px;
+}
+.wizard .wizard-body form section {
+  font-size: 1.5em;
+}
+.wizard .wizard-body form section input[type='text'],
+.wizard .wizard-body form section textarea {
+  padding: 10px;
+}
+.wizard .wizard-body form section label.blk {
+  padding-bottom: 10px;
+}
+.wizard .final {
+  background: #cf0920;
+  border-radius: 10px;
+  line-height: 20px;
+  font-size: 1em;
+  color: #fff;
+}
+

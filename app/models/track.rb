@@ -19,10 +19,18 @@ class Track < ActiveRecord::Base
     in: %w{public open private}
   }
 
-  validates :owner_id, :title, presence: true
+  validates :title, presence: true
 
   def achievements_for(user)
     achievements.where(user: user)
+  end
+
+  scope :contributed_by, -> (user) do
+    joins(:contributors).where(contributors: { user_id: user.id })
+  end
+
+  scope :enrolled_by, -> (user) do
+    joins(:enrollments).where(enrollments: { user_id: user.id })
   end
 
 end

@@ -1,31 +1,32 @@
-class TracksController < ResourceController
+class TracksController < ApplicationController
 
   layout 'dashboard'
 
-  skip_before_action :authenticate_user!, only: [:show]
-  skip_before_action :load_resource, only: [:show]
+  before_action :authenticate_user!
+  before_action :ensure_viewability, only: [:show]
+  before_action :ensure_contributability, only: [:edit, :destroy]
 
   def new
-    @model ||= Track.new
+    @track ||= Track.new
   end
 
   def edit
+    @track = Track.find params[:track_id]
   end
 
   def create
-    @model = Track.new extract_params
-    @model.owner = current_user
-    @model.save!
+    @model = Track.create! extract_params
+    @model.contributors.create! user: current_user, track: @model
     redirect_to controller: 'home', action: 'dashboard'
   rescue
     render action: 'new'
   end
 
   def show
-    @model = Track.includes(
-           :learning_resources,
-           :milestones => [:achievements]
-           ).find params[:id]
+    @track = Track.includes(
+      :learning_resources,
+      :milestones => [:achievements]
+    ).find params[:id]
     head :not_found unless @model.viewable_by? current_user
   end
 
@@ -38,7 +39,13 @@ class TracksController < ResourceController
   def extract_params
     params
       .require(:track)
-      .permit(:title, :description, :visibility, :contributability)
+      .permit(:title, :description, :visibility)
+  end
+
+  def ensure_contributability
+  end
+
+  def ensure_viewability
   end
 
 end

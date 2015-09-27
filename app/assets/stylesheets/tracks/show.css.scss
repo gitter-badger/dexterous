@@ -1,0 +1,357 @@
+/*
+ *= require ../application
+ */
+
+@import '../mixins/dashboard';
+
+.select-wrapper {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  background: #fff url("/assets/arrowdown.gif") no-repeat 90% 50%;
+}
+.select-wrapper select {
+  padding: 5px 8px;
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  appearance: none;
+}
+.select-wrapper select:focus {
+  outline: none;
+}
+.track-wrapper {
+  width: 300px;
+  float: left;
+  position: relative;
+}
+.track-wrapper .track-inner {
+  position: absolute;
+  background: #faf9f7;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}
+.track-wrapper .track-inner > header,
+.track-wrapper .track-inner > footer {
+  left: 0;
+  right: 0;
+  position: absolute;
+  height: 30px;
+}
+.track-wrapper .track-inner > header {
+  top: 0;
+}
+.track-wrapper .track-inner > footer {
+  bottom: 0;
+}
+.track-wrapper .track-inner > .body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  bottom: 30px;
+}
+#track-wrapper {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+  color: #333;
+  font-weight: 100;
+}
+#track-title {
+  font-weight: bold;
+}
+#timeline {
+  min-height: 300px;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  background: #fafafa;
+  font-size: 0.8em;
+}
+#timeline h1,
+#timeline h2,
+#timeline h3,
+#timeline h4,
+#timeline h5,
+#timeline h6 {
+  font-size: 1.3em;
+}
+#spine {
+  width: 0;
+  border-right: 3px solid #e3e3e3;
+  position: absolute;
+  left: 100px;
+  top: 0;
+  bottom: 0;
+}
+#milestones {
+  margin: 20px 0;
+  padding: 10px 0;
+}
+#milestones > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#milestones > ul > li {
+  margin: 0 200px 10px 130px;
+  border-left: #c8c8c8 4px solid;
+  background: #fff;
+}
+#milestones > ul > li .milestone-controls {
+  display: none;
+  color: #a8a8a8;
+}
+#milestones > ul > li:hover .milestone-controls {
+  display: block;
+}
+#milestones > ul > li .description {
+  padding: 10px 0;
+  margin: 0;
+}
+#milestones > ul > li .thumb {
+  background: url("/assets/milestone_circle.png") center center no-repeat;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  top: 10px;
+  left: -43px;
+}
+#milestones > ul > li .pointer {
+  height: 0;
+  width: 0;
+  border: 6px solid transparent;
+  border-right: 6px solid #c8c8c8;
+  position: absolute;
+  top: 15px;
+  left: -16px;
+}
+#milestones > ul > li h1 {
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 10px;
+}
+.milestone-inner {
+  padding: 10px;
+  position: relative;
+  border-top: #e6e6e6 1px solid;
+  border-right: #e6e6e6 1px solid;
+  border-bottom: #e6e6e6 1px solid;
+}
+.side-container {
+  position: absolute;
+  right: -200px;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 190px;
+}
+.side-container .timestamp-container {
+  padding-bottom: 10px;
+  color: #808080;
+}
+.side-container .timestamp-container label {
+  font-weight: 100;
+}
+.resource-thumb {
+  background: #e6e6e6;
+  border-radius: 15px;
+  color: #333;
+  padding: 0 12px;
+  display: inline-block;
+}
+.resource-thumb .resource-num {
+  padding-right: 10px;
+  border-right: 1px solid #333;
+  margin-right: 5px;
+  line-height: 20px;
+}
+.resource-create-thumb:hover i {
+  color: #cf0018;
+}
+.resource-thumb:hover {
+  background: #fee0a2;
+}
+.resource-num:hover {
+  color: #cf0018;
+}
+.milestone-footer {
+  padding-top: 10px;
+  border-top: #fafafa 1px solid;
+}
+.resource-dropdown {
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  margin-top: 10px;
+  padding: 0;
+  position: relative;
+}
+.resource-dropdown .arrow {
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  position: absolute;
+  border-bottom: 7px solid #e6e6e6;
+  position: absolute;
+  left: 20px;
+  top: -15px;
+}
+.resource-dropdown h2 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.9em;
+  font-weight: 400;
+  padding: 0 10px;
+}
+.resource-dropdown h2 i {
+  margin-top: 4px;
+}
+.inline-form input[type='submit'],
+.inline-form button {
+  background: #e6e6e6;
+  color: #000;
+  padding: 5px 17px;
+  border: none;
+  border-radius: 17px;
+}
+.inline-form input[type='submit']:hover {
+  background: #008000;
+  color: #fff;
+}
+.inline-form .cancel-btn:hover {
+  background: #f00;
+  color: #fff;
+}
+.inline-form input,
+.inline-form textarea {
+  box-shadow: none !important;
+}
+.inline-form .row-title,
+.inline-form .row-url,
+.inline-form .row-description {
+  background: #fff;
+}
+.inline-form .row {
+  width: 100%;
+  min-height: 30px;
+  border-bottom: 1px dashed #e6e6e6;
+}
+.inline-form .row label {
+  label: width 10%;
+  color: #c8c8c8;
+  float: left;
+  display: block;
+  padding: 0;
+  margin: 0;
+  padding-left: 10px;
+  line-height: 30px;
+}
+.inline-form .row input[type='text'] {
+  margin-left: 5px;
+}
+.inline-form .row input[type='text'],
+.inline-form .row textarea {
+  width: 90%;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  font-weight: 100;
+  line-height: 30px;
+  padding: 0 0 0 10px;
+}
+.inline-form .row-description label {
+  display: block;
+  width: 100%;
+}
+.inline-form .row-description textarea {
+  width: 100%;
+}
+.inline-form .row-submit,
+.inline-form .row-description {
+  border: none;
+  padding-top: 4px;
+}
+.inline-form input[type='submit'] {
+  margin-right: 10px;
+}
+.zilch-msg {
+  padding: 10px;
+  background: #fff;
+  text-align: center;
+}
+.zilch-msg a {
+  font-weight: 800;
+}
+.zilch-msg a:hover {
+  border-bottom: 1px #c0c0c0 dotted;
+}
+.zilch-msg .smiley {
+  font-size: 2em;
+}
+#create-milestone-btn {
+  background: #cf0018;
+  border-radius: 15px;
+  font-weight: bold;
+  line-height: 30px;
+  padding: 0 10px;
+  margin: 0;
+  color: #fff;
+}
+.resource-list-wrapper {
+  background: #fff;
+  padding: 5px;
+}
+.resource-list {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+.resource-list li {
+  display: block;
+  border-bottom: 1px dashed #e6e6e6;
+  padding: 10px 0 0 0;
+}
+.resource-list li p,
+.resource-list li a {
+  margin: 0;
+  margin: 5px 0;
+}
+.resource-list li a {
+  color: #808080;
+}
+.resource-list li a:hover {
+  border-bottom: 1px dotted #808080;
+}
+.resource-list li:last-child {
+  border-bottom: none;
+}
+.milestone-completion-thumb {
+  display: block;
+  height: 40px;
+  width: 55px;
+  position: absolute;
+  top: 0px;
+  left: -71px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat no-repeat;
+}
+.milestone-completion-thumb:hover {
+  opacity: 0.5;
+}
+.milestone-completion-thumb.complete,
+.milestone-completion-thumb:hover {
+  background-image: url("http://localhost:3000/assets/achievement_complete.png");
+}
+.milestone-completion-thumb.complete:hover {
+  background-image: url("http://localhost:3000/assets/achievement_remove.png");
+}

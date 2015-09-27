@@ -4,6 +4,10 @@ Dexterous::Application.routes.draw do
   get 'dashboard' => 'home#dashboard'
   get 'tracks/:id/timeline' => 'tracks#timeline'
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letters"
+  end
+
   resources :learning_resources
   resources :milestones
   resources :achievements
