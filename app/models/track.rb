@@ -1,5 +1,7 @@
 class Track < ActiveRecord::Base
 
+  has_paper_trail
+
   has_many :permissions
   has_many :contributors
   has_many :enrollments

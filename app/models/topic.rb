@@ -1,5 +1,9 @@
 class Topic < ActiveRecord::Base
+
   belongs_to :subject, polymorphic: true
+
+  has_paper_trail
+
 end
 
 # == Schema Information

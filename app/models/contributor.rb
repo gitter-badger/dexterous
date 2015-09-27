@@ -3,6 +3,8 @@ class Contributor < ActiveRecord::Base
   belongs_to :user
   belongs_to :track
 
+  has_paper_trail
+
   validates :user_id, :track_id, presence: true
   validates :can_view,
             inclusion: { in: [true]},

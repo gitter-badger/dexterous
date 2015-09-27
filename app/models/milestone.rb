@@ -1,15 +1,17 @@
 class Milestone < ActiveRecord::Base
 
-    belongs_to :track
-    has_many :learning_resources
-    has_many :achievements
-    has_many :achievers, through: :achievements, source: :user
+  belongs_to :track
+  has_many :learning_resources
+  has_many :achievements
+  has_many :achievers, through: :achievements, source: :user
 
-    validates :track_id, presence: true
+  has_paper_trail
 
-    scope :contributed_by, -> (user) do
-      joins(:track => :contributors).where(contributors: { user_id: user.id })
-    end
+  validates :track_id, presence: true
+
+  scope :contributed_by, -> (user) do
+    joins(:track => :contributors).where(contributors: { user_id: user.id })
+  end
 
 end
 
