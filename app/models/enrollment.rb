@@ -15,8 +15,12 @@ end
 # Table name: enrollments
 #
 #  id           :integer          not null, primary key
-#  user_id      :integer
-#  track_id     :integer
-#  enrolled_at  :datetime
+#  user_id      :integer          not null
+#  track_id     :integer          not null
 #  completed_at :datetime
+#
+# Indexes
+#
+#  index_enrollments_on_track_id              (track_id)
+#  index_enrollments_on_user_id_and_track_id  (user_id,track_id)
 #

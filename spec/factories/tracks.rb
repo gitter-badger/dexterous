@@ -16,8 +16,14 @@ end
 #
 #  id          :integer          not null, primary key
 #  title       :string
+#  slug        :string
 #  description :text
 #  visibility  :string
 #  created_at  :datetime
 #  updated_at  :datetime
+#
+# Indexes
+#
+#  index_tracks_on_slug                 (slug) UNIQUE
+#  index_tracks_on_visibility_and_slug  (visibility,slug)
 #
