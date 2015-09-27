@@ -1,10 +1,13 @@
 class LearningResource < ActiveRecord::Base
 
+  extend FriendlyId
+
   belongs_to :milestone
   belongs_to :track
   belongs_to :owner, class_name: 'User'
 
   has_paper_trail
+  friendly_id :title, use: :slugged
 
   validates :track_id, :title, presence: true
   validates :url, format: {

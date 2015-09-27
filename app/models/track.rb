@@ -1,6 +1,9 @@
 class Track < ActiveRecord::Base
 
+  extend FriendlyId
+
   has_paper_trail
+  friendly_id :title, use: :slugged
 
   has_many :permissions
   has_many :contributorships

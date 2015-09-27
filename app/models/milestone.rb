@@ -1,11 +1,14 @@
 class Milestone < ActiveRecord::Base
 
+  extend FriendlyId
+
   belongs_to :track
   has_many :learning_resources
   has_many :achievements
   has_many :achievers, through: :achievements, source: :user
 
   has_paper_trail
+  friendly_id :title, use: :slugged
 
   validates :track_id, presence: true
 

@@ -1,8 +1,11 @@
 class Topic < ActiveRecord::Base
 
+  extend FriendlyId
+
   belongs_to :subject, polymorphic: true
 
   has_paper_trail
+  friendly_id :title, use: :slugged
 
 end
 
