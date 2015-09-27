@@ -2,7 +2,7 @@
 .pointer
 
 .achievement-wrapper
-  %a.milestone-completion-thumb
+  = link_to '', achievements_path(params: { achievement: { milestone_id: milestone.id }}), remote: true, method: :post, class: 'milestone-completion-thumb'
 
 %h1= milestone.title
 %div
