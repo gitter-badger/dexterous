@@ -2,8 +2,6 @@ require "que/web"
 
 Dexterous::Application.routes.draw do
 
-  resources :settings
-  resources :participants
   root 'home#index'
   get 'dashboard' => 'home#dashboard'
   get 'tracks/:id/timeline' => 'tracks#timeline'
@@ -19,9 +17,15 @@ Dexterous::Application.routes.draw do
   resources :achievements
   resources :enrollments
 
-  resources(:tracks) { resources :milestones }
-  resources(:milestones) { resources :learning_resources }
-  resources(:learning_resources)
+  resources :tracks do
+    resources :milestones
+    resources :settings
+    resources :participants
+  end
+  resources :milestones do
+    resources :learning_resources
+  end
+  resources :learning_resources
 
   devise_for :users, controllers: { registrations: 'registrations' }
 

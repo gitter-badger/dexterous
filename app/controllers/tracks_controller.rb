@@ -30,10 +30,6 @@ class TracksController < ApplicationController
     head :not_found unless @model.viewable_by? current_user
   end
 
-  def timeline
-    render layout: 'application'
-  end
-
   private
 
   def extract_params

@@ -3,10 +3,9 @@
     %header
       .lfloat
         %h1
-          %a{href: '/dashboard'} dexterous
+          = link_to 'dexterous', dashboard_path
       .rfloat
         %input#search-form{placeholder: 'search'}
-        = link_to 'Create track', { controller: 'tracks', action: 'new' } , {class: 'prime'}
     .body
       = yield
     %footer
