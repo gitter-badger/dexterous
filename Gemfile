@@ -5,7 +5,8 @@ gem 'rails', '4.2.4'
 # Ruby Libraries
 gem 'pg'
 gem 'devise'
-gem 'authority'
+gem 'pundit'
+gem 'paper_trail'
 gem 'annotate'
 
 # Servers and deployment
