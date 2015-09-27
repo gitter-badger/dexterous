@@ -1,0 +1,16 @@
+@import './mixins/colors';
+
+.d-button {
+    
+}
+.d-button--hollow {
+    border: 2px solid $col-yellow-prim;
+    border-radius: 20px;
+    color: $col-yellow-prim;
+    padding: 5px 20px !important; //TODO FIXME
+}
+
+.d-button--hollow:hover {
+    color: black !important;
+    background: $col-yellow-prim;
+}
