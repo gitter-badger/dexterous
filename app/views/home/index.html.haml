@@ -4,7 +4,7 @@
 #banner
   #login-links
     - if user_signed_in?
-      = link_to 'Dashboard', action: :dashboard, id: 'dashboard-thumb'
+      = link_to 'Dashboard', dashboard_path, id: 'dashboard-thumb'
       = link_to 'Logout', destroy_user_session_path, id: 'logout-thumb'
     - else
       = link_to 'Login', new_user_session_path, id: 'login-thumb'
