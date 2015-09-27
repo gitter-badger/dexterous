@@ -11,14 +11,16 @@ class TracksController < ApplicationController
   end
 
   def edit
-    @track = Track.contributed_by(current_user).find params[:id]
+    @track = Track.contributed_by(current_user).friendly.find params[:id]
   end
 
   def create
-    @model = Track.create! extract_params
-    @model.contributors.create! user: current_user, track: @model
+    @track = Track.create! extract_params
+    @track.contributorships.create! user: current_user, track: @model
     redirect_to controller: 'home', action: 'dashboard'
-  rescue
+  rescue => e
+    puts e
+    puts e.backtrace
     render action: 'new'
   end
 
@@ -26,7 +28,7 @@ class TracksController < ApplicationController
     @track = Track.includes(
       :learning_resources,
       :milestones => [:achievements]
-    ).find params[:id]
+    ).friendly.find params[:id]
     head :not_found unless @model.viewable_by? current_user
   end
 

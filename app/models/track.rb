@@ -32,7 +32,7 @@ class Track < ActiveRecord::Base
   end
 
   scope :contributed_by, -> (user) do
-    joins(:contributors).where(contributors: { user_id: user.id })
+    joins(:contributorships).where(contributorships: { user_id: user.id })
   end
 
   scope :enrolled_by, -> (user) do

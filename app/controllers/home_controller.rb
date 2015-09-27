@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @enrollments = current_user.enrollments.includes :achievements, track: :milestones
-    @contributors = current_user.contributors.includes :track
+    @contributors = current_user.contributorships.includes :track
     achievements = {}
     @enrollments.each do |en|
       en.achievements.each do |ach|
