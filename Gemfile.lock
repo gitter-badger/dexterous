@@ -305,9 +305,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unicorn-rails (2.2.0)
-      rack
-      unicorn
     warden (1.2.3)
       rack (>= 1.0)
     websocket-driver (0.6.2)
@@ -351,7 +348,7 @@ DEPENDENCIES
   shoulda-matchers
   stylus
   uglifier (>= 1.3.0)
-  unicorn-rails
+  unicorn
 
 BUNDLED WITH
    1.10.6

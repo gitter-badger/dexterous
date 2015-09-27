@@ -10,7 +10,7 @@ gem 'authority'
 gem 'annotate'
 
 # Servers and deployment
-gem 'unicorn-rails'
+gem 'unicorn'
 gem 'capistrano', group: :development
 
 # Meta languages
