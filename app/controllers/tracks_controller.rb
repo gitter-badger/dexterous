@@ -3,8 +3,6 @@ class TracksController < ApplicationController
   layout 'dashboard'
 
   before_action :authenticate_user!
-  before_action :ensure_viewability, only: [:show]
-  before_action :ensure_contributability, only: [:edit, :destroy]
 
   def new
     @track ||= Track.new
@@ -38,12 +36,6 @@ class TracksController < ApplicationController
     params
       .require(:track)
       .permit(:title, :description, :visibility)
-  end
-
-  def ensure_contributability
-  end
-
-  def ensure_viewability
   end
 
 end
