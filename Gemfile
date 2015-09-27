@@ -8,6 +8,7 @@ gem 'devise'
 gem 'pundit'
 gem 'paper_trail'
 gem 'annotate'
+gem 'textacular', '~> 3.0'
 
 # Servers and deployment
 gem 'unicorn'
