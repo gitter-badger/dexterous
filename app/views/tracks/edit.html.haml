@@ -6,8 +6,16 @@
   %span#track-title-label Track:
   %span#track-title= @track.title
 
-#timeline
-  #spine
-  #milestones.sjs--milestones--index--outlet
-    = render 'milestone_list', track: @track
-    = render 'new_milestone_entry', track: @track
+.d-tab-set-container
+  .d-tabs.d-tabs--centered
+    %span
+      %a.active Milestones
+      %a Participants
+      %a Settings
+  .d-tabs-footer
+  .d-tab-body.sjs-track-participants--index--outlet
+    #timeline
+      #spine
+      #milestones.sjs--milestones--index--outlet
+        = render 'milestone_list', track: @track
+        = render 'new_milestone_entry', track: @track

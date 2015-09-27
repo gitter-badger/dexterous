@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   include Pundit
+  include DeviseCustomizations
 
   # TODO Enable after policies have been added
   # after_action :verify_authorized, :except => :index
