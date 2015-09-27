@@ -3,7 +3,8 @@ class Track < ActiveRecord::Base
   has_paper_trail
 
   has_many :permissions
-  has_many :contributors
+  has_many :contributorships
+  has_many :contributors, through: :contributorships, source: :user
   has_many :enrollments
   has_many :enrolled_users, through: :enrollments, source: :user
   has_many :milestones

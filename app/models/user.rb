@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :confirmable,
            :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :contributors
+    has_many :contributorships
 
     has_many :contributable_tracks,
              source: :track,
-             through: :contributors
+             through: :contributorships
 
     has_many :enrollments
 
