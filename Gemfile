@@ -11,6 +11,7 @@ gem 'annotate'
 gem 'textacular', '~> 3.0'
 gem 'que'
 gem 'que-web'
+gem 'friendly_id', '~> 5.1.0'
 
 # Servers and deployment
 gem 'unicorn'
