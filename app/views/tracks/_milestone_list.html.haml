@@ -1,0 +1,5 @@
+%ul#milestone-list
+  - track.milestones.each do |milestone|
+    %li
+      .milestone-inner
+        = render 'tracks/milestone_list_entry', track: track, milestone: milestone

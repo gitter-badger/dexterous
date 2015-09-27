@@ -1,26 +1,21 @@
-class MilestonesController < ResourceController
+class MilestonesController < ApplicationController
 
-    before_filter :load_track, only: [:create]
+  def new
+    @milestone = Milestone.new(track_id: params[:track_id])
+  end
 
-    def create
-        if model_class.creatable_by? current_user, track: @track
-            @model = model_class.new extract_params
-            @model.owner = current_user
-            @model.save!
-            render json: @model
-        else
-            head :not_acceptable
-        end
-    rescue
-        render json: @model.errors.full_messages, status: 406
-    end
+  def create
+    @milestone = Milestone.new(extract_params)
+    @track = Track.contributed_by(current_user).find @milestone.track_id
+    @milestone.save!
+  end
 
-    private
+  private
 
-    def extract_params
-            params
-                    .require(:milestone)
-                    .permit(:title, :description, :expected_duration, :track_id)
-    end
+  def extract_params
+    params
+      .require(:milestone)
+      .permit(:title, :description, :expected_duration, :track_id)
+  end
 
 end

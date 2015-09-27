@@ -10,7 +10,6 @@ end
 # Table name: milestones
 #
 #  id                :integer          not null, primary key
-#  owner_id          :integer
 #  track_id          :integer
 #  title             :string
 #  description       :text

@@ -45,4 +45,6 @@ group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
   gem 'letter_opener_web', '~> 1.2.0'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end

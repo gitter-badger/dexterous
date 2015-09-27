@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20140309220430) do
   end
 
   create_table "milestones", force: :cascade do |t|
-    t.integer  "owner_id"
     t.integer  "track_id"
     t.string   "title"
     t.text     "description"

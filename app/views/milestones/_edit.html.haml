@@ -1,0 +1,8 @@
+= form_for milestone, method: 'post', remote: true, html: { class: 'inline-form pure-form' } do |f|
+  = f.hidden_field :track_id
+  .row.row-title
+    = f.text_field :title, placeholder: 'Title'
+  .row.row-description
+    = f.text_field :description, placeholder: 'Description'
+  .row.row-submit
+    = f.submit 'Save'

@@ -13,11 +13,9 @@ Dexterous::Application.routes.draw do
   resources :achievements
   resources :enrollments
 
-  resources :tracks, {shallow: true} do
-    resources :milestones, {shallow: true} do
-      resources :learning_resources
-    end
-  end
+  resources(:tracks) { resources :milestones }
+  resources(:milestones) { resources :learning_resources }
+  resources(:learning_resources)
 
   devise_for :users, controllers: { registrations: 'registrations' }
 

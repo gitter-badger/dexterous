@@ -11,7 +11,7 @@ class TracksController < ApplicationController
   end
 
   def edit
-    @track = Track.find params[:track_id]
+    @track = Track.contributed_by(current_user).find params[:id]
   end
 
   def create

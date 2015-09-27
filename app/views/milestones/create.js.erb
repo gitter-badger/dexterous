@@ -1,0 +1,4 @@
+$('.sjs--milestones--index--outlet').html(
+    "<%= j render 'tracks/milestone_list', track: @track, milestone: @milestone, format: :html %>" + 
+    "<%= j render 'tracks/new_milestone_entry', track: @track, milestone: @milestone, format: :html %>"
+);

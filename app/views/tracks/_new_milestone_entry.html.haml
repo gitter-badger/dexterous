@@ -1,0 +1,8 @@
+%ul#pseudo-milestone-list
+  %li
+    .milestone-inner
+      .thumb
+      .pointer
+      .sjs--milestones--new--outlet
+        %p Milestones are goals which help you keep track of your progress
+        = link_to 'Create a milestone', new_track_milestone_path(track), id: 'create-milestone-btn', class: 'pure-button', remote: true, method: 'get'
