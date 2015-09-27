@@ -12,3 +12,17 @@ class Contributor < ActiveRecord::Base
             if: Proc.new {|p| p.can_manage }
 
 end
+
+# == Schema Information
+#
+# Table name: contributors
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  track_id   :integer
+#  can_view   :boolean
+#  can_edit   :boolean
+#  can_manage :boolean
+#  created_at :datetime
+#  updated_at :datetime
+#

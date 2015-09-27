@@ -6,3 +6,14 @@ class Enrollment < ActiveRecord::Base
     validates :user_id, :track_id, presence: true
 
 end
+
+# == Schema Information
+#
+# Table name: enrollments
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  track_id     :integer
+#  enrolled_at  :datetime
+#  completed_at :datetime
+#

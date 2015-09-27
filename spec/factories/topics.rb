@@ -6,3 +6,14 @@ FactoryGirl.define do
     update "MyString"
   end
 end
+
+# == Schema Information
+#
+# Table name: topics
+#
+#  id           :integer          not null, primary key
+#  subject_id   :integer
+#  subject_type :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#

@@ -8,3 +8,19 @@ FactoryGirl.define do
     url 'example.com'
   end
 end
+
+# == Schema Information
+#
+# Table name: learning_resources
+#
+#  id           :integer          not null, primary key
+#  url          :string
+#  title        :string
+#  milestone_id :integer
+#  track_id     :integer
+#  owner_id     :integer
+#  description  :text
+#  metadata     :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#

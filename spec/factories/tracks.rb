@@ -9,3 +9,15 @@ FactoryGirl.define do
     contributability 'public'
   end
 end
+
+# == Schema Information
+#
+# Table name: tracks
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  visibility  :string
+#  created_at  :datetime
+#  updated_at  :datetime
+#
