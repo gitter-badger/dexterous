@@ -9,6 +9,8 @@ gem 'pundit'
 gem 'paper_trail'
 gem 'annotate'
 gem 'textacular', '~> 3.0'
+gem 'que'
+gem 'que-web'
 
 # Servers and deployment
 gem 'unicorn'

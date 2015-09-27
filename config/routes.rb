@@ -1,3 +1,5 @@
+require "que/web"
+
 Dexterous::Application.routes.draw do
 
   root 'home#index'
@@ -7,6 +9,8 @@ Dexterous::Application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letters"
   end
+
+  mount Que::Web => "/que"
 
   resources :learning_resources
   resources :milestones
