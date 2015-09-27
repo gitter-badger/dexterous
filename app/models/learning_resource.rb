@@ -1,8 +1,5 @@
 class LearningResource < ActiveRecord::Base
 
-    include Authority::Abilities
-    self.authorizer_name = "TrackItemAuthorizer"
-
     belongs_to :milestone
     belongs_to :track
     belongs_to :owner, class_name: 'User'

@@ -1,8 +1,5 @@
 class Milestone < ActiveRecord::Base
 
-    include Authority::Abilities
-    self.authorizer_name = "TrackItemAuthorizer"
-
     belongs_to :track
     has_many :learning_resources
     has_many :achievements

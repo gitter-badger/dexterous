@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :confirmable,
            :recoverable, :rememberable, :trackable, :validatable
 
-    include Authority::UserAbilities
-
     has_many :contributors
 
     has_many :contributable_tracks,
