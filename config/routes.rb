@@ -2,6 +2,7 @@ require "que/web"
 
 Dexterous::Application.routes.draw do
 
+  resources :settings
   resources :participants
   root 'home#index'
   get 'dashboard' => 'home#dashboard'
