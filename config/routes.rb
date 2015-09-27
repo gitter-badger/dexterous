@@ -7,10 +7,10 @@ Dexterous::Application.routes.draw do
   get 'tracks/:id/timeline' => 'tracks#timeline'
 
   if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letters"
+    mount LetterOpenerWeb::Engine, at: '/letters'
   end
 
-  mount Que::Web => "/que"
+  mount Que::Web => '/que'
 
   resources :learning_resources
   resources :milestones
