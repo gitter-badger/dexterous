@@ -5,11 +5,11 @@ class TrackPolicy < ApplicationPolicy
   end
 
   def show?
-    track.visibility_public? || track.enrolled_in?(record) || track.is_contributed_by?(user)
+    track.public? || user.has_role?([:enrollee, :contributor], track)
   end
 
   def update?
-    track.is_contributed_by?(user)
+    user.has_role? :contributor, track
   end
 
   def create?
@@ -17,6 +17,7 @@ class TrackPolicy < ApplicationPolicy
   end
 
   def destroy?
+    user.has_role? :contributor, track
   end
 
 end
