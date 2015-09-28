@@ -10,7 +10,7 @@ class CreateAchievements < ActiveRecord::Migration
     end
 
     add_index :achievements, :milestone_id
-    add_index :achievements, :enrollment_id
+    add_index :achievements, :user_id
 
   end
 end

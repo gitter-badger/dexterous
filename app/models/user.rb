@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :achievements,
-           through: :enrollments
+  has_many :achievements
 
   has_many :achieved_milestones,
            through: :achievements,

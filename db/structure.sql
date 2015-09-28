@@ -49,7 +49,7 @@ SET default_with_oids = false;
 
 CREATE TABLE achievements (
     id integer NOT NULL,
-    enrollment_id integer NOT NULL,
+    user_id integer NOT NULL,
     milestone_id integer NOT NULL,
     duration integer,
     score integer,
@@ -75,72 +75,6 @@ CREATE SEQUENCE achievements_id_seq
 --
 
 ALTER SEQUENCE achievements_id_seq OWNED BY achievements.id;
-
-
---
--- Name: contributorships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE contributorships (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    track_id integer NOT NULL,
-    can_view boolean DEFAULT false NOT NULL,
-    can_edit boolean DEFAULT false NOT NULL,
-    can_manage boolean DEFAULT false NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: contributorships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE contributorships_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: contributorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE contributorships_id_seq OWNED BY contributorships.id;
-
-
---
--- Name: enrollments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE enrollments (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    track_id integer NOT NULL,
-    completed_at timestamp without time zone
-);
-
-
---
--- Name: enrollments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE enrollments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: enrollments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE enrollments_id_seq OWNED BY enrollments.id;
 
 
 --
@@ -324,40 +258,6 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
 
 --
--- Name: topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE topics (
-    id integer NOT NULL,
-    subject_id integer NOT NULL,
-    subject_type integer NOT NULL,
-    title character varying NOT NULL,
-    slug character varying NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: topics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE topics_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE topics_id_seq OWNED BY topics.id;
-
-
---
 -- Name: tracks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -366,7 +266,7 @@ CREATE TABLE tracks (
     title character varying NOT NULL,
     slug character varying NOT NULL,
     description text,
-    visibility integer DEFAULT 0 NOT NULL,
+    visibility_cd integer DEFAULT 0 NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -491,20 +391,6 @@ ALTER TABLE ONLY achievements ALTER COLUMN id SET DEFAULT nextval('achievements_
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY contributorships ALTER COLUMN id SET DEFAULT nextval('contributorships_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY enrollments ALTER COLUMN id SET DEFAULT nextval('enrollments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY learning_resources ALTER COLUMN id SET DEFAULT nextval('learning_resources_id_seq'::regclass);
 
 
@@ -540,13 +426,6 @@ ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY topics ALTER COLUMN id SET DEFAULT nextval('topics_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
 
 
@@ -570,22 +449,6 @@ ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq':
 
 ALTER TABLE ONLY achievements
     ADD CONSTRAINT achievements_pkey PRIMARY KEY (id);
-
-
---
--- Name: contributorships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY contributorships
-    ADD CONSTRAINT contributorships_pkey PRIMARY KEY (id);
-
-
---
--- Name: enrollments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY enrollments
-    ADD CONSTRAINT enrollments_pkey PRIMARY KEY (id);
 
 
 --
@@ -629,14 +492,6 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY topics
-    ADD CONSTRAINT topics_pkey PRIMARY KEY (id);
-
-
---
 -- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -661,13 +516,6 @@ ALTER TABLE ONLY versions
 
 
 --
--- Name: index_achievements_on_enrollment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_achievements_on_enrollment_id ON achievements USING btree (enrollment_id);
-
-
---
 -- Name: index_achievements_on_milestone_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -675,24 +523,10 @@ CREATE INDEX index_achievements_on_milestone_id ON achievements USING btree (mil
 
 
 --
--- Name: index_contributorships_on_user_id_and_track_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_achievements_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_contributorships_on_user_id_and_track_id ON contributorships USING btree (user_id, track_id);
-
-
---
--- Name: index_enrollments_on_track_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_enrollments_on_track_id ON enrollments USING btree (track_id);
-
-
---
--- Name: index_enrollments_on_user_id_and_track_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_enrollments_on_user_id_and_track_id ON enrollments USING btree (user_id, track_id);
+CREATE INDEX index_achievements_on_user_id ON achievements USING btree (user_id);
 
 
 --
@@ -759,20 +593,6 @@ CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
 
 
 --
--- Name: index_topics_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_topics_on_slug ON topics USING btree (slug);
-
-
---
--- Name: index_topics_on_subject_id_and_subject_type_and_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_topics_on_subject_id_and_subject_type_and_slug ON topics USING btree (subject_id, subject_type, slug);
-
-
---
 -- Name: index_tracks_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -780,10 +600,10 @@ CREATE UNIQUE INDEX index_tracks_on_slug ON tracks USING btree (slug);
 
 
 --
--- Name: index_tracks_on_visibility_and_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_tracks_on_visibility_cd_and_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_tracks_on_visibility_and_slug ON tracks USING btree (visibility, slug);
+CREATE INDEX index_tracks_on_visibility_cd_and_slug ON tracks USING btree (visibility_cd, slug);
 
 
 --
@@ -850,12 +670,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140216205022');
 INSERT INTO schema_migrations (version) VALUES ('20140217164902');
 
 INSERT INTO schema_migrations (version) VALUES ('20140217170627');
-
-INSERT INTO schema_migrations (version) VALUES ('20140217205055');
-
-INSERT INTO schema_migrations (version) VALUES ('20140222074257');
-
-INSERT INTO schema_migrations (version) VALUES ('20140309220430');
 
 INSERT INTO schema_migrations (version) VALUES ('20150927112826');
 

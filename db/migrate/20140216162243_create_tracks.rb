@@ -12,7 +12,7 @@ class CreateTracks < ActiveRecord::Migration
     end
 
     add_index :tracks, :slug, unique: true
-    add_index :tracks, [:visibility, :slug]
+    add_index :tracks, [:visibility_cd, :slug]
 
   end
 end

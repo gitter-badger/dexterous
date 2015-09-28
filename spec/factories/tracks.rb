@@ -14,16 +14,16 @@ end
 #
 # Table name: tracks
 #
-#  id          :integer          not null, primary key
-#  title       :string           not null
-#  slug        :string           not null
-#  description :text
-#  visibility  :integer          default(0), not null
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id            :integer          not null, primary key
+#  title         :string           not null
+#  slug          :string           not null
+#  description   :text
+#  visibility_cd :integer          default(0), not null
+#  created_at    :datetime
+#  updated_at    :datetime
 #
 # Indexes
 #
-#  index_tracks_on_slug                 (slug) UNIQUE
-#  index_tracks_on_visibility_and_slug  (visibility,slug)
+#  index_tracks_on_slug                    (slug) UNIQUE
+#  index_tracks_on_visibility_cd_and_slug  (visibility_cd,slug)
 #
