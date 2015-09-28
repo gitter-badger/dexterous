@@ -14,6 +14,7 @@
 @import 'components/tabs';
 @import 'components/zilch_wrapper';
 @import 'components/tab_set_container';
+@import 'components/notifications';
 
 html,
 body {
@@ -166,4 +167,8 @@ body {
 	margin-bottom: 10px;
 	opacity: 0.6;
     }
+}
+.page-container {
+    width: 90%;
+    margin: 20px auto;
 }

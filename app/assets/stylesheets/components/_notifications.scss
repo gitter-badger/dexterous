@@ -1,0 +1,12 @@
+.devise-notification {
+    text-align: center;
+    padding: 10px;
+}
+.devise-notification.notice {
+    color: white;
+    background: #5C97D8;
+}
+.devise-notification.alert {
+    color: white;
+    background: maroon;
+}
