@@ -1,7 +1,7 @@
 class CreateAchievements < ActiveRecord::Migration
   def change
     create_table :achievements do |t|
-      t.integer :enrollment_id, null: false
+      t.integer :user_id, null: false
       t.integer :milestone_id, null: false
       t.integer :duration
       t.integer :score
