@@ -14,6 +14,7 @@ Bundler.require(:default, Rails.env)
 
 module Dexterous
   class Application < Rails::Application
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -27,5 +28,6 @@ module Dexterous
     # config.i18n.default_locale = :de
     config.assets.precompile += %w{dashboard.js timeline.js dashboard.css}
     config.active_record.schema_format = :sql
+
   end
 end
