@@ -13,6 +13,8 @@ gem 'que'
 gem 'que-web'
 gem 'friendly_id', '~> 5.1.0'
 gem 'simple_enum'
+gem 'rolify'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # Servers and deployment
 gem 'unicorn'
