@@ -1,0 +1,4 @@
+.d-tabs.d-tabs--centered
+  %span
+    - tabs.each do |tab|
+      link_to tab[:label], tab[:to], class: (tab[:active] ? 'active' : '')
