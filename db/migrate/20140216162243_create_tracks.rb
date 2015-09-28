@@ -5,7 +5,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :title, null: false
       t.string :slug, null: false
       t.text :description
-      t.integer :visibility, default: 0, null: false
+      t.integer :visibility_cd, default: 0, null: false
 
       t.timestamps
 

@@ -21,13 +21,9 @@ class Track < ActiveRecord::Base
   #   open       => Is visible to all users, guests and search engines
   #   public     => Is visibile to any signed in users
   #   private    => Is visible to contributors only
-  enum visibility: %w[public private open]
+  as_enum visibility: %i[public private open], prefix: true
 
   validates :title, presence: true
-
-  def achievements_for(user)
-    achievements.where(user: user)
-  end
 
   scope :contributed_by, -> (user) do
     joins(:contributorships).where(contributorships: { user_id: user.id })
@@ -35,6 +31,14 @@ class Track < ActiveRecord::Base
 
   scope :enrolled_by, -> (user) do
     joins(:enrollments).where(enrollments: { user_id: user.id })
+  end
+
+  def achievements_for(user)
+    achievements.where(user: user)
+  end
+
+  def is_contributed_by? user
+    contributorships.where(user_id: user.id).present?
   end
 
 end

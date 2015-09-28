@@ -15,10 +15,10 @@ end
 # Table name: tracks
 #
 #  id          :integer          not null, primary key
-#  title       :string
-#  slug        :string
+#  title       :string           not null
+#  slug        :string           not null
 #  description :text
-#  visibility  :string
+#  visibility  :integer          default(0), not null
 #  created_at  :datetime
 #  updated_at  :datetime
 #
