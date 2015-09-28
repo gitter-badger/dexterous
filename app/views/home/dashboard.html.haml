@@ -13,13 +13,13 @@
     %ul#tracks
       %li.track#new-track
         = link_to "Create a track", controller: 'tracks', action: 'new'
-      - @contributors.each do |contrib|
+      - @contributed_tracks.each do |track|
         %li.track
           %header
             %h1
               %i.fa.fa-road
-              = link_to contrib.track.title, edit_track_path(contrib.track)
-          .body= contrib.track.description
+              = link_to track.title, edit_track_path(track)
+          .body= track.description
 
   %header
     .rfloat
@@ -27,40 +27,13 @@
     %h1 Tracks you are enrolled in
   .body
     %ul#tracks
-      - @enrollments.each do |en|
+      - if @enrolled_tracks.blank?
+        .zilch-wrapper
+          You are currently not enrolled in any exploration tracks.
+      - @enrolled_tracks.each do |track|
         %li.track
           %header
             %h1
               %i.fa.fa-road
-              = link_to en.track.title, en.track
-          .body= en.track.description
-          - i = 0
-          - first = nil
-          .milestones
-            %h2.tcenter Milestones
-            %ul.milestones-list
-              - en.track.milestones.each do |milestone|
-                %li
-                  - if @achievements[milestone.id].nil?
-                    %i.fa.fa-circle-o
-                  - else
-                    - first = milestone if first.nil?
-                    %i.fa.fa-check-circle-o
-                    - i += 1
-                  %span.title= milestone.title
-            .explore-wrapper.tcenter
-              = link_to "Explore Track", en.track, class: 'pure-button'
-          .achievement-summary
-            %a.num-thumb
-              %span.ach-count= i
-              = " / "
-              %span.milestone-count= en.track.milestones.length
-            Milestones Completed
-          .upcoming-summary
-            - if first.nil?
-              %p.zilch
-                No upcoming milestone
-            - else
-              %h2 Next milestone
-              %h3= first.title
-              %p= first.description
+              = link_to track.title, track
+          .body= track.description

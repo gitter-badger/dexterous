@@ -7,16 +7,8 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @enrollments = current_user.enrollments.includes :achievements, track: :milestones
-    @contributors = current_user.contributorships.includes :track
-    achievements = {}
-    @enrollments.each do |en|
-      en.achievements.each do |ach|
-        achievements[ach.milestone_id] = ach
-      end
-    end
-    @achievements = achievements
-    render 'dashboard'
+    @contributed_tracks = Track.contributed_by(current_user).all
+    @enrolled_tracks = Track.enrolled_by(current_user).all
   end
 
 end
