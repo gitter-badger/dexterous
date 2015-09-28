@@ -21,9 +21,7 @@ class Track < ActiveRecord::Base
   #   open       => Is visible to all users, guests and search engines
   #   public     => Is visibile to any signed in users
   #   private    => Is visible to contributors only
-  validates :visibility, inclusion: {
-    in: %w{public open private}
-  }
+  enum visibility: %w[public private open]
 
   validates :title, presence: true
 
@@ -46,10 +44,10 @@ end
 # Table name: tracks
 #
 #  id          :integer          not null, primary key
-#  title       :string
-#  slug        :string
+#  title       :string           not null
+#  slug        :string           not null
 #  description :text
-#  visibility  :string
+#  visibility  :integer          default(0), not null
 #  created_at  :datetime
 #  updated_at  :datetime
 #

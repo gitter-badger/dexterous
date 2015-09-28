@@ -265,10 +265,10 @@ ALTER SEQUENCE topics_id_seq OWNED BY topics.id;
 
 CREATE TABLE tracks (
     id integer NOT NULL,
-    title character varying,
-    slug character varying,
+    title character varying NOT NULL,
+    slug character varying NOT NULL,
     description text,
-    visibility character varying,
+    visibility integer DEFAULT 0 NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );

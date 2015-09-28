@@ -2,10 +2,10 @@ class CreateTracks < ActiveRecord::Migration
   def change
     create_table :tracks do |t|
 
-      t.string :title
-      t.string :slug
+      t.string :title, null: false
+      t.string :slug, null: false
       t.text :description
-      t.string :visibility
+      t.integer :visibility, default: 0, null: false
 
       t.timestamps
 
