@@ -14,7 +14,7 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.create! extract_params
-    @track.contributorships.create! user: current_user, track: @model
+    current_user.add_role :contributor, @track
     redirect_to controller: 'home', action: 'dashboard'
   rescue => e
     puts e

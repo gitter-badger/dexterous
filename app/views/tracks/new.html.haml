@@ -19,4 +19,5 @@
         = f.label :visibility, 'Who can view the track'
         .select-wrapper
           = f.select :visibility, [['Only contributors', 'private'], ['Any user', 'public'], ['Anyone including anonymous guests and search engines', 'open']]
+      %section
         = f.submit 'Create', class: 'pure-button pure-button-primary final'
