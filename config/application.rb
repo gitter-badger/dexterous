@@ -28,6 +28,7 @@ module Dexterous
     # config.i18n.default_locale = :de
     config.assets.precompile += %w{dashboard.js timeline.js dashboard.css}
     config.active_record.schema_format = :sql
+    config.active_record.raise_in_transactional_callbacks = true
 
   end
 end

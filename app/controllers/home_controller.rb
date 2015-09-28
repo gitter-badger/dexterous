@@ -2,6 +2,10 @@ class HomeController < ApplicationController
 
   before_filter :authenticate_user!, only: ['dashboard']
 
+  def index
+    @public_tracks = Track.publics.limit(3)
+  end
+
   def dashboard
     @enrollments = current_user.enrollments.includes :achievements, track: :milestones
     @contributors = current_user.contributorships.includes :track

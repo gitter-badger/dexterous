@@ -11,7 +11,7 @@ class Track < ActiveRecord::Base
   #   open       => Is visible to all users, guests and search engines
   #   public     => Is visibile to any signed in users
   #   private    => Is visible to contributors only
-  as_enum visibility: %i[public private open], prefix: true
+  as_enum :visibility, %i[public private open]
 
   has_many :permissions
   has_many :milestones
