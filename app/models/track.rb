@@ -2,19 +2,9 @@ class Track < ActiveRecord::Base
 
   extend FriendlyId
 
+  resourcify
   has_paper_trail
   friendly_id :title, use: :slugged
-
-  has_many :permissions
-  has_many :contributorships
-  has_many :contributors, through: :contributorships, source: :user
-  has_many :enrollments
-  has_many :enrolled_users, through: :enrollments, source: :user
-  has_many :milestones
-  has_many :achievements, through: :milestones
-  has_many :achievers, through: :achievements, source: :user
-  has_many :learning_resources
-  has_many :topics, as: :subject
 
   # visibility:
   # ----------
@@ -23,15 +13,31 @@ class Track < ActiveRecord::Base
   #   private    => Is visible to contributors only
   as_enum visibility: %i[public private open], prefix: true
 
+  has_many :permissions
+  has_many :milestones
+  has_many :achievements, through: :milestones
+  has_many :achievers, through: :achievements, source: :user
+  has_many :learning_resources
+  has_many :topics, as: :subject
+
   validates :title, presence: true
 
-  scope :contributed_by, -> (user) do
-    joins(:contributorships).where(contributorships: { user_id: user.id })
+  def self.contributed_by user
+    Track.with_role :contributor, user
   end
 
-  scope :enrolled_by, -> (user) do
-    joins(:enrollments).where(enrollments: { user_id: user.id })
+  def self.enrolled_by user
+    Track.with_role :enrollee, user
   end
+
+  def contributors
+    User.with_role :contributor, self
+  end
+
+  def enrollees
+    User.with_role :enrollee, self
+  end
+  alias_method :enrolled_users, :enrollees
 
   def achievements_for(user)
     achievements.where(user: user)

@@ -1,33 +1,22 @@
 class User < ActiveRecord::Base
+
   rolify
 
-    # Include default devise modules. Others available are:
-    # :confirmable, :lockable, :timeoutable and :omniauthable
-    devise :database_authenticatable, :registerable, :confirmable,
-           :recoverable, :rememberable, :trackable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :contributorships
+  has_many :achievements,
+           through: :enrollments
 
-    has_many :contributable_tracks,
-             source: :track,
-             through: :contributorships
+  has_many :achieved_milestones,
+           through: :achievements,
+           source: :milestone
 
-    has_many :enrollments
-
-    has_many :enrolled_tracks,
-             source: :track,
-             through: :enrollments
-
-    has_many :achievements,
-             through: :enrollments
-
-    has_many :achieved_milestones,
-             through: :achievements,
-             source: :milestone
-
-    validates :name,
-        presence: true,
-        length: { minimum: 5, maximum: 30 }
+  validates :name,
+            presence: true,
+            length: { minimum: 5, maximum: 30 }
 
 end
 

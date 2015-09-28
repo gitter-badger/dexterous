@@ -12,10 +12,6 @@ class Milestone < ActiveRecord::Base
 
   validates :track_id, presence: true
 
-  scope :contributed_by, -> (user) do
-    joins(:track => :contributors).where(contributors: { user_id: user.id })
-  end
-
 end
 
 # == Schema Information

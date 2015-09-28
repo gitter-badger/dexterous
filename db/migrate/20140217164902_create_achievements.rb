@@ -1,5 +1,6 @@
 class CreateAchievements < ActiveRecord::Migration
   def change
+
     create_table :achievements do |t|
       t.integer :user_id, null: false
       t.integer :milestone_id, null: false
