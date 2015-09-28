@@ -1,10 +1,4 @@
-class ApplicationPolicy
-  attr_reader :user, :record
-
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
+class ApplicationPolicy < Struct.new(:user, :record)
 
   def index?
     false
@@ -38,16 +32,12 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
+  class Scope < Struct.new(:user, :scope)
 
     def resolve
       scope
     end
+
   end
+
 end
