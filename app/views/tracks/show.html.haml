@@ -6,7 +6,13 @@
   %span#track-title-label Track: 
   %span#track-title= @track.title
 
-#timeline
-  #spine
-  #milestones.sjs--milestones--index--outlet
-    = render 'milestone_list', track: @track
+- if @track.milestones.size > 0
+  #timeline
+    #spine
+    #milestones.sjs--milestones--index--outlet
+      = render 'milestone_list', track: @track
+- else
+  .zilch-wrapper
+    .smiley :(
+    .message Nothing to see here yet. Move along!
+
