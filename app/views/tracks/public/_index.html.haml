@@ -1,5 +1,8 @@
-%ul.track-list
-  - if @public_tracks.empty?
-    .zilch-wrapper No public exploration tracks could be found
-  - @public_tracks.each do |track|
-    %li= track.title
+.public-tracks-container
+  %h2 Public Exploration Tracks
+  .inner
+    %ul.track-list
+      - if @public_tracks.empty?
+        .zilch-wrapper No public exploration tracks could be found
+      - @public_tracks.each do |track|
+        %li= link_to track.title, track

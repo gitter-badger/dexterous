@@ -3,19 +3,8 @@
 
 %h1#track-wrapper
     %span#track-title-label Track: 
-    %span#track-title= @model.title
+    %span#track-title= @track.title
 
-#timeline{'data-bind' => 'template: { name: "timeline_tmpl", data: $data}'}
-
-- %w{timeline lr_form milestone_form milestone_sidebar_container milestone_timeline_entry}.each do |tmpl|
-    %script{type: 'text/html', id: "#{tmpl}_tmpl" }
-        = render partial: "ko_templates/#{tmpl}"
+#timeline
 
 = javascript_include_tag "tracks/show"
-
-/ Bootstrap the bindings with the data we already have
-%script
-    != "app.viewModels.track = new dx.Track(#{@model.to_json});"
-    - @model.milestones_for(current_user).each do |m|
-        != "app.viewModels.milestones.push(new dx.Milestone(#{m.to_json}));"
-    ko.applyBindings(app.viewModels);
