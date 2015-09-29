@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
   include Pundit
   include DeviseCustomizations
 
-  # TODO Enable after policies have been added
-  # after_action :verify_authorized, :except => :index
-  # after_action :verify_policy_scoped, :only => :index
-
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Prevent CSRF attacks by raising an exception.
@@ -17,6 +13,13 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
+  end
+
+  private
+
+  def self.ensure_policy_application
+    after_action :verify_authorized, :except => :index
+    after_action :verify_policy_scoped, :only => :index
   end
 
 end

@@ -2,6 +2,8 @@ class TracksController < ApplicationController
 
   layout 'dashboard'
 
+  ensure_policy_application
+
   before_action :authenticate_user!
 
   def new
@@ -10,7 +12,7 @@ class TracksController < ApplicationController
   end
 
   def edit
-    @track = Track.contributed_by(current_user).friendly.find params[:id]
+    @track = Track.friendly.find params[:id]
     authorize @track
   end
 

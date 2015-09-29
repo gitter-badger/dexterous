@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    abstract_method (1.2.1)
     actionmailer (4.2.4)
       actionpack (= 4.2.4)
       actionview (= 4.2.4)
@@ -334,6 +335,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  abstract_method (~> 1.2.1)
   acts-as-taggable-on (~> 3.4)
   annotate
   capistrano

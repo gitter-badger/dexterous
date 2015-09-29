@@ -1,9 +1,12 @@
 class MilestonesController < ApplicationController
 
+  ensure_policy_application
+
   before_action :load_milestone, only: [:edit, :destroy, :update]
 
   def new
     @milestone = Milestone.new(track_id: params[:track_id])
+    authorize @milestone
   end
 
   def update
@@ -32,7 +35,8 @@ class MilestonesController < ApplicationController
   end
 
   def load_milestone
-    @milestone = Milestone.contributed_by(current_user).find params[:id]
+    @milestone = Milestone.find params[:id]
+    authorize @milestone
   end
 
 end
