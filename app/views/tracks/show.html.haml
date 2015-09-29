@@ -1,10 +1,12 @@
 - content_for :head do
-    = stylesheet_link_tag 'tracks/show', media: "all"
+  = stylesheet_link_tag 'tracks/show', media: "all"
+  = javascript_include_tag 'application'
 
 %h1#track-wrapper
-    %span#track-title-label Track: 
-    %span#track-title= @track.title
+  %span#track-title-label Track: 
+  %span#track-title= @track.title
 
 #timeline
-
-= javascript_include_tag "tracks/show"
+  #spine
+  #milestones.sjs--milestones--index--outlet
+    = render 'milestone_list', track: @track
