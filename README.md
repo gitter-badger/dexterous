@@ -2,6 +2,8 @@
 
 # Dexterous
 
+[![Join the chat at https://gitter.im/lorefnon/dexterous](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lorefnon/dexterous?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Dexterous is a tool for experts in any discipline, who would like to guide others through focused learning tracks. Aspirants can pursue these tracks at their own time and convenience and interact with the experts for guidance and provide feedback about the course.
 
 It can be compared to various online learning platforms but unlike the university system there are no degrees to be awarded, no pointless competition among participants and no timeframes.
