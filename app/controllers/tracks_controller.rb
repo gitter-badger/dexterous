@@ -1,47 +1,34 @@
-class TracksController < ApplicationController
+class TracksController < ResourcefulController
 
   layout 'dashboard'
-
+  alias_method :track, :resource
   ensure_policy_application
 
   before_action :authenticate_user!, except: [:show, :index]
-
-  def new
-    @track ||= Track.new
-    authorize @track
-  end
-
-  def edit
-    @track = Track.friendly.find params[:id]
-    authorize @track
-  end
+  before_action :load_resource, only: %i[edit destroy update]
 
   def create
-    @track = Track.new extract_params
-    authorize @track
-    @track.save!
+    super
     current_user.add_role :contributor, @track
     redirect_to controller: 'home', action: 'dashboard'
-  rescue => e
-    puts e
-    puts e.backtrace
-    render action: 'new'
   end
 
   def show
-    @track = Track.includes(
+    @resource = Track.includes(
       :learning_resources,
       :milestones => [:achievements]
     ).friendly.find params[:id]
-    authorize @track
+    authorize resource
   end
 
   private
 
-  def extract_params
-    params
-      .require(:track)
-      .permit(:title, :description, :visibility)
+  def permitted_params
+    %i[title description visibility]
+  end
+
+  def load_resource
+    @resource = resource_model.friendly.find params[:id]
   end
 
 end

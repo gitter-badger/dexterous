@@ -2,8 +2,8 @@ class ResourcefulController < ApplicationController
 
   attr_accessor :resource
 
-  before_action :build_resource, only: [:new]
-  before_action :load_resource, only: [:edit, :destroy, :update]
+  before_action :build_resource, only: %i[new create]
+  before_action :load_resource, only: %i[show edit destroy update]
   before_action :authorize_resource, except: [:index]
 
   def create
