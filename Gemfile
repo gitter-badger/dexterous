@@ -16,6 +16,7 @@ gem 'simple_enum'
 gem 'rolify'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'abstract_method', '~> 1.2.1'
+gem 'gravatar_image_tag'
 
 # Servers and deployment
 gem 'unicorn'
