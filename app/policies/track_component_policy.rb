@@ -4,6 +4,10 @@ class TrackComponentPolicy < TrackPolicy
     record.track
   end
 
+  def create?
+    update?
+  end
+
   class Scope < Scope
 
     def accessible_track_ids

@@ -4,7 +4,7 @@
 
 %h1#track-wrapper
   %span#track-title-label Track:
-  %span#track-title= @track.title
+  %span#track-title= track.title
 
 .d-tab-set-container
   .d-tabs.d-tabs--centered
@@ -17,5 +17,5 @@
     #timeline
       #spine
       #milestones.sjs--milestones--index--outlet
-        = render 'milestone_list', track: @track
-        = render 'new_milestone_entry', track: @track
+        = render 'milestone_list'
+        = render 'new_milestone_entry'

@@ -3,7 +3,7 @@
     %header
       .lfloat
         %h1
-          = link_to 'dexterous', dashboard_path
+          = link_to 'dexterous', (user_signed_in? ? dashboard_path : root_path)
       .rfloat
         %input#search-form{placeholder: 'search'}
     .body

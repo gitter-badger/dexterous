@@ -2,14 +2,16 @@ class ResourcefulController < ApplicationController
 
   attr_accessor :resource
 
-  before_action :build_resource, only: %i[new create]
+  before_action :build_empty_resource, only: :new
+  before_action :build_resource, only: :create
   before_action :load_resource, only: %i[show edit destroy update]
-  before_action :authorize_resource, except: [:index]
+  before_action :authorize_resource, except: :index
 
   def create
     resource.save!
   end
 
+  def new; end
   def edit; end
   def show; end
 
@@ -23,7 +25,6 @@ class ResourcefulController < ApplicationController
 
   private
 
-  abstract_method :resource_model
   abstract_method :permitted_params
 
   def authorize_resource
@@ -31,7 +32,7 @@ class ResourcefulController < ApplicationController
   end
 
   def load_resource
-    @resource = resource_model.find params[:id]
+    @resource = resource_scope.find params[:id]
   end
 
   def extract_params
@@ -44,12 +45,28 @@ class ResourcefulController < ApplicationController
     resource_model.name.underscore.to_sym
   end
 
+  def build_empty_resource
+    @resource = resource_scope.new
+  end
+
   def build_resource
-    @resource = resource_model.new extract_params
+    @resource = resource_scope.new extract_params
+  end
+
+  def resource_model_name
+    self.class.name.match(/(\S+)Controller/)[1].singularize
   end
 
   def resource_model
-    self.class.name.match(/(\S+)Controller/)[1].singularize.constantize
+    resource_model_name.constantize
+  end
+
+  def resource_key
+    resource_model_name.underscore
+  end
+
+  def resource_scope
+    resource_model
   end
 
 end
