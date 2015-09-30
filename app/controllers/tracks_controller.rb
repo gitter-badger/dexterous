@@ -25,11 +25,10 @@ class TracksController < ResourcefulController
 
   def resource_scope
     scope = super
-    if params[:action] == :show
-      scope.includes(:learning_resources, :milestones => [:achievements])
-    else
-      scope
+    for_action :show do
+      scope = scope.includes :learning_resources, :milestones => [:achievements]
     end
+    scope
   end
 
 end
