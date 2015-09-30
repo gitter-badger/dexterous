@@ -1,10 +1,10 @@
 = render 'tracks/header'
 
 .d-tab-set-container.sjs-track-participants--index--outlet
-  = render 'tracks/tabs', active: 'Milestones'
+  = render 'tabs', tabs: track_tabs(track, :milestones)
   .d-tab-body
     #timeline
       #spine
       #milestones.sjs--milestones--index--outlet
-        = render 'milestone_list'
-        = render 'new_milestone_entry'
+        = render 'milestones/index'
+        = render 'milestones/dummy_new'

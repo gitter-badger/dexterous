@@ -21,4 +21,22 @@ module ApplicationHelper
     end
   end
 
+  def track_tabs track, active_id
+    tabs = [{
+       id: :milestones,
+       label: 'Milestones' ,
+       to: track_milestones_path(track),
+     }, {
+       id: :participants,
+       label: 'Participants',
+       to: track_participants_path(track)
+     }, {
+       id: :settings,
+       label: 'Settings',
+       to: track_settings_path(track)
+     }]
+
+    tabs.map{|it| it[:active] = (it[:id] == active_id) ; it }
+  end
+
 end

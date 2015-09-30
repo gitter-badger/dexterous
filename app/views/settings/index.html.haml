@@ -1,6 +1,6 @@
 = render 'tracks/header'
 
 .d-tab-set-container.sjs-track-participants--index--outlet
-  = render 'tabs', tabs: track_tabs(track, :participants)
+  = render 'tabs', tabs: track_tabs(track, :settings)
   .d-tab-body
-    = render 'participants/index'
+    = render 'settings/index'

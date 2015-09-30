@@ -1,7 +1,11 @@
 class MilestonesController < ResourcefulController
 
-  ensure_policy_application
+  after_action :verify_authorized
   helper_method :milestone
+  helper_method :track
+  layout 'dashboard'
+
+  include TrackComponentSupport
 
   alias_method :milestone, :resource
 
@@ -13,7 +17,7 @@ class MilestonesController < ResourcefulController
 
   def build_empty_resource
     super
-    resource.track = Track.friendly.find(params[:track_id]) if params[:track_id]
+    resource.track = track
   end
 
 end
