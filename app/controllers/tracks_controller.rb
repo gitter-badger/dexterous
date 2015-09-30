@@ -9,7 +9,7 @@ class TracksController < ResourcefulController
 
   def create
     super
-    current_user.add_role :contributor, @track
+    current_user.add_role :contributor, track
     redirect_to controller: 'home', action: 'dashboard'
   end
 
