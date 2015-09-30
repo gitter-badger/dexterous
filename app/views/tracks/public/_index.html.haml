@@ -1,8 +1,11 @@
-.public-tracks-container
-  %h2 Public Exploration Tracks
+.public-tracks-container.d-panel
+  .d-panel__header
+    .d-panel__primary-title.d-panel__primary-title--centered Public Exploration Tracks
   .inner
-    %ul.track-list
+    .track-list.d-cards
       - if @public_tracks.empty?
         .zilch-wrapper No public exploration tracks could be found
       - @public_tracks.each do |track|
-        %li= link_to track.title, track
+        .d-cards__card.d-card
+          .d-card__title= link_to track.title, track
+          .d-card__body= track.description

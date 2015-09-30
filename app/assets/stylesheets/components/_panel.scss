@@ -1,0 +1,23 @@
+.d-panel {
+
+    &__header {
+	height: 40px;
+	background: #e6e6e6;
+	border-bottom: 2px solid #c8c8c8;
+	overflow: hidden;
+	line-height: 40px;
+    }
+
+    &__primary-title {
+	color: #CF0018;
+	font-size: 16px;
+
+	&--centered {
+	    text-align: center;
+	}
+    }
+
+    &__body {
+
+    }
+}

@@ -1,0 +1,12 @@
+.d-cards {
+    
+    text-align: center;
+    background: #FAFAFA;
+    
+    &__card {
+	width: 30%;
+	display: inline-block;
+	margin: 10px;
+    }
+
+}
