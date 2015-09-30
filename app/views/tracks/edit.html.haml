@@ -1,19 +1,8 @@
-- content_for :head do
-  = stylesheet_link_tag 'tracks/show', media: "all"
-  = javascript_include_tag 'application'
+= render 'tracks/header'
 
-%h1#track-wrapper
-  %span#track-title-label Track:
-  %span#track-title= track.title
-
-.d-tab-set-container
-  .d-tabs.d-tabs--centered
-    %span
-      %a.active Milestones
-      %a Participants
-      %a Settings
-  .d-tabs-footer
-  .d-tab-body.sjs-track-participants--index--outlet
+.d-tab-set-container.sjs-track-participants--index--outlet
+  = render 'tracks/tabs', active: 'Milestones'
+  .d-tab-body
     #timeline
       #spine
       #milestones.sjs--milestones--index--outlet

@@ -1,0 +1,6 @@
+= render 'tracks/header'
+
+.d-tab-set-container.sjs-track-participants--index--outlet
+  = render 'tracks/tabs', active: 'Participants'
+  .d-tab-body
+    = render 'participants/index'

@@ -1,14 +1,8 @@
 - content_for :content do
   #dashboard
-    %header
-      .lfloat
-        %h1
-          = link_to 'dexterous', (user_signed_in? ? dashboard_path : root_path)
-      .rfloat
-        %input#search-form{placeholder: 'search'}
+    = render 'application/header'
     .body
       = yield
-    %footer
-      dexterous is free software. &copy; 2015 Lorefnon 
+    = render 'application/footer'
 
 = render template: 'layouts/application'

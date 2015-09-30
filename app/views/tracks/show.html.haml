@@ -1,10 +1,4 @@
-- content_for :head do
-  = stylesheet_link_tag 'tracks/show', media: "all"
-  = javascript_include_tag 'application'
-
-%h1#track-wrapper
-  %span#track-title-label Track: 
-  %span#track-title= track.title
+= render 'tracks/header'
 
 - if track.milestones.size > 0
   #timeline
